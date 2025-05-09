@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>CS 1.6 Szerver</title>
+  <style>
+    body { background: #1e1e1e; color: white; text-align: center; font-family: sans-serif; padding-top: 50px; }
+    h1 { color: #00ff00; }
+    .info { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>CS 1.6 Szerver Státusz</h1>
+  <div class="info">
+    <p><strong>IP:</strong> 123.123.123.123:27015</p>
+    <p id="map">Map: betöltés...</p>
+    <p id="players">Játékosok: betöltés...</p>
+  </div>
+
+  <script>
+    const ip = "123.123.123.123:27015"; // <-- Cseréld le a saját szervered IP-jére
+    fetch(`https://api.gametracker.rs/server/${ip}`)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("map").innerText = "Map: " + data.map;
+        document.getElementById("players").innerText = `Játékosok: ${data.players}/${data.max_players}`;
+      })
+      .catch(() => {
+        document.getElementById("map").innerText = "Map: nem elérhető";
+        document.getElementById("players").innerText = "Játékosok: nem elérhető";
+      });
+  </script>
+</body>
+</html>
 
