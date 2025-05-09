@@ -1,35 +1,21 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>CS 1.6 Szerver</title>
+  <title>Szerver Statisztika</title>
   <style>
-    body { background: #1e1e1e; color: white; text-align: center; font-family: sans-serif; padding-top: 50px; }
-    h1 { color: #00ff00; }
-    .info { margin-top: 20px; font-size: 18px; }
+    body { background-color: #121212; color: #fff; font-family: Arial, sans-serif; text-align: center; padding-top: 100px; }
+    .card { background-color: #1e1e1e; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    h1 { color: #00ff99; }
   </style>
 </head>
 <body>
-  <h1>CS 1.6 Szerver Státusz</h1>
-  <div class="info">
-    <p><strong>IP:</strong> 123.123.123.123:27015</p>
-    <p id="map">Map: betöltés...</p>
-    <p id="players">Játékosok: betöltés...</p>
+  <div class="card">
+    <h1>Counter-Strike 1.6 Szerver</h1>
+    <p><strong>IP:</strong> 213.181.206.20:27075​	</p>
+    <p><strong>Játékosok:</strong> 10 / 32</p>
+    <p><strong>Pálya:</strong> awp_india</p>
+    <p><strong>Státusz:</strong> Elérhető ✅</p>
   </div>
-
-  <script>
-    const ip = "123.123.123.123:27015"; // <-- Cseréld le a saját szervered IP-jére
-    fetch(`https://api.gametracker.rs/server/${ip}`)
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("map").innerText = "Map: " + data.map;
-        document.getElementById("players").innerText = `Játékosok: ${data.players}/${data.max_players}`;
-      })
-      .catch(() => {
-        document.getElementById("map").innerText = "Map: nem elérhető";
-        document.getElementById("players").innerText = "Játékosok: nem elérhető";
-      });
-  </script>
 </body>
 </html>
-
